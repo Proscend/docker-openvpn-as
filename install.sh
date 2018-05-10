@@ -44,8 +44,10 @@ if [ $git_check -ne 0 ]; then
     sudo apt-get install -y git
 fi
 
-git clone https://github.com/Proscend/docker-opevpn-as.git ~/docker-openvpn-as
-cd ~/docker-openvpn-as
+if [ ! -e ".git" ]; then
+    git clone https://github.com/Proscend/docker-opevpn-as.git ~/docker-openvpn-as
+    cd ~/docker-openvpn-as
+fi
 
 timezone=$(cat /etc/timezone)
 interface=$(ip route | grep default | awk '{ print $5 }')
@@ -71,4 +73,4 @@ volumes:
 EOF
 ) > docker-compose.yml
 
-source ./start.sh
+./start.sh

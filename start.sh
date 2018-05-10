@@ -8,7 +8,7 @@ if [ $? -ne 0 ]; then
 fi
 
 interface=$(ip route | grep default | awk '{ print $5 }')
-IP=$(ifconfig $interface | sed -n '2 p' | awk '{ print $3}')
+IP=$(ifconfig $interface | grep 'inet addr:'| grep -v '127.0.0.1' | cut -d: -f2 | awk '{ print $1}')
 
 cat <<EOF
 OpenVPN Access Server: https://$IP:943
