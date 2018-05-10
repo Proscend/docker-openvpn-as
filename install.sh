@@ -39,7 +39,7 @@ fi
 git --version
 git_check=$?
 
-if [ git_check -ne 0 ]; then
+if [ $git_check -ne 0 ]; then
     sudo apt-get update
     sudo apt-get install -y git
 fi
