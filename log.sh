@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo docker-compose logs "$1" openvpn-as
+sudo docker-compose logs openvpn-as
